@@ -4,11 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
        default-autowire="byName">
-
        <bean id="queryService" class="com.triad.service.impl.QueryServiceImpl"/>
-       <bean id="registerService" class="com.triad.service.impl.RegisterServiceImpl" scope="singleton" init-method="init" destroy-method="stop">
-           <property name="webHost" value="192.168.7.1"/>
-           <property name="webPort" value="1918"/>
+       <bean id="registerService" class="com.triad.service.impl.RegisterServiceImpl" scope="singleton">
        </bean>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 </beans>

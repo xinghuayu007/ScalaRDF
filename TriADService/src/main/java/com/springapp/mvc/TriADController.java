@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 
@@ -88,6 +87,7 @@ public class TriADController {
     public ModelAndView HomePage(ModelMap modelMap){
         List<ClusterServer> serverList = registerService.getCluster();
         modelMap.addAttribute("mRecordData",RegisterToView(serverList));
+        System.out.println(modelMap.get("mRecordData"));
         return new ModelAndView("home");
     }
 
@@ -136,7 +136,7 @@ public class TriADController {
         StringBuffer sb = new StringBuffer();
         for(ClusterServer server:serverList){
             sb.append("addRecordData(\"clusterTable\",");
-            //sb.append("\"").append(server.getRegState().getMessage()).append("\",");
+            sb.append("\"").append(server.getState()).append("\",");
             sb.append("\"").append(server.getAddr()).append("\",");
             //sb.append("\"").append(server.getName()).append("\",");
             sb.append("\"").append(server.getPort()).append("\",");

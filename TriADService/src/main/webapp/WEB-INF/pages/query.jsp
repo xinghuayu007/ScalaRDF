@@ -150,8 +150,8 @@
         <!-- Main Nav -->
         <div id="navigation">
             <ul>
-                <li><a href="/TriadService/cluster"><span>Cluster</span></a></li>
-                <li><a href="/TriadService/query" class="active"><span>Query Task</span></a></li>
+                <li><a href="/ScalaRDFService/cluster"><span>Cluster</span></a></li>
+                <li><a href="/ScalaRDFService/query" class="active"><span>Query Task</span></a></li>
             </ul>
         </div>
         <!-- End Main Nav -->

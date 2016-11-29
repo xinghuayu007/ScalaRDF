@@ -39,6 +39,8 @@ public class RegisterServiceImpl implements RegisterService {
 	@Override
 	public ArrayList<ClusterServer> getCluster() {
 		HashSet<String> hosts = (HashSet<String>) jedis.smembers("hosts");
+		//HashSet<String> hosts = new HashSet<String>();
+		hosts.add("192.168.7.1");
 		ArrayList<ClusterServer> cluster = new ArrayList<ClusterServer>();
 		for(String host:hosts){
 			ClusterServer server = new ClusterServer();

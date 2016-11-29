@@ -1,12 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: zhaiyeact
-  Date: 2015/10/16
-  Time: 10:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html >
 <head>
@@ -16,9 +9,26 @@
     <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
     <script type="text/javascript">
         $().ready(function(){
-            ${mRecordData}
+            //${mRecordData};
+            getData();
+            
         });
-      function addRecordData(eleId, status, ip, hostName, port,role){
+       
+      function getData(){
+    	  var tb = document.getElementById('clusterTable');
+    	  var rowNum=tb.rows.length;
+    	  for (i=0;i<rowNum;i++)
+    	  {
+    	     tb.deleteRow(i);
+    	     rowNum=rowNum-1;
+    	     i=i-1;
+    	  }
+    	  ${mRecordData};
+    	  window.setTimeout(getData,1000); 
+    	  
+      }
+      
+      function addRecordData(eleId, status, ip, port,role){
           var tableObj = document.getElementById(eleId);
           var row = tableObj.insertRow();
           var cell = row.insertCell(0);
@@ -31,14 +41,13 @@
           cell.innerHTML = "<h3><a href=\"#\" >"+ip+"</a></h3>";
 
           cell = row.insertCell(1);
-          cell.innerHTML = "<a href=\"#\">"+hostName+"</a>";
+          cell.innerHTML = "<a href=\"#\">"+port+"</a>";
 
           cell = row.insertCell(2);
           cell.innerHTML = status;
 
           cell = row.insertCell(3);
           cell.innerHTML = role;
-
 
       }
     </script>
@@ -56,8 +65,8 @@
     <!-- Main Nav -->
     <div id="navigation">
       <ul>
-        <li><a href="/TriadService/cluster" class="active"><span>Cluster</span></a></li>
-        <li><a href="/TriadService/query"><span>Query Task</span></a></li>
+        <li><a href="/ScalaRDFService/cluster" class="active"><span>Cluster</span></a></li>
+        <li><a href="/ScalaRDFService/query"><span>Query Task</span></a></li>
       </ul>
     </div>
     <!-- End Main Nav -->
@@ -84,9 +93,9 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0" id="clusterTable">
               <tr>
                 <th>Ip</th>
-                <th>HostName</th>
+                <th>Port</th>
                 <th>Status</th>
-                <th>Identity</th>
+                <th>Role</th>
               </tr>
             </table>
 
@@ -107,7 +116,7 @@
 <!-- Footer -->
 <div id="footer">
   <div class="shell">
-    <span class="left">&copy; provided by Zhaiye</span>
+    <span class="left">&copy; provided by wangxx</span>
   </div>
 </div>
 <!-- End Footer -->
